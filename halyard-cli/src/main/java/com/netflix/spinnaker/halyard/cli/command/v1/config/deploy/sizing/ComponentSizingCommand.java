@@ -42,6 +42,12 @@ public class ComponentSizingCommand extends NestableCommand {
     registerSubcommand(new NamedComponentSizingCommand("igor"));
     registerSubcommand(new NamedComponentSizingCommand("orca"));
     registerSubcommand(new NamedComponentSizingCommand("rosco"));
+    registerSubcommand(new NamedComponentSizingCommand("clouddriver-caching"));
+    registerSubcommand(new NamedComponentSizingCommand("clouddriver-rw"));
+    registerSubcommand(new NamedComponentSizingCommand("clouddriver-ro"));
+    registerSubcommand(new NamedComponentSizingCommand("clouddriver-ro-deck"));
+    registerSubcommand(new NamedComponentSizingCommand("echo-scheduler"));
+    registerSubcommand(new NamedComponentSizingCommand("echo-worker"));
   }
 
   @Override

@@ -48,7 +48,7 @@ public class ComponentSizingEditCommand extends AbstractConfigCommand {
             names = "--replicas",
             description = "Set the number of replicas (pods) to be created for this service."
     )
-    private Integer replicas;
+    private Integer replicas = 1;
 
     @Parameter(
             names = "--pod-requests-cpu",
