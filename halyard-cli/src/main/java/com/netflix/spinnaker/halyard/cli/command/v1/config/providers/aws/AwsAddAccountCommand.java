@@ -68,24 +68,24 @@ public class AwsAddAccountCommand extends AbstractAddAccountCommand {
   private String assumeRole;
 
   @Parameter(
-      names = "--initializing-lifecycle-hook-default-result",
+      names = "--launching-lifecycle-hook-default-result",
       description = AwsCommandProperties.HOOK_DEFAULT_VALUE_DESCRIPTION)
-  private String initializingHookDefaultResult = "ABANDON";
+  private String launchingHookDefaultResult = "ABANDON";
 
   @Parameter(
-      names = "--initializing-lifecycle-hook-heartbeat-timeout-seconds",
+      names = "--launching-lifecycle-hook-heartbeat-timeout-seconds",
       description = AwsCommandProperties.HOOK_HEARTBEAT_TIMEOUT_DESCRIPTION)
-  private Integer initializingHookHeartbeatTimeoutSeconds = 3200;
+  private Integer launchingHookHeartbeatTimeoutSeconds = 3600;
 
   @Parameter(
-      names = "--initializing-lifecycle-hook-notification-target-arn",
+      names = "--launching-lifecycle-hook-notification-target-arn",
       description = AwsCommandProperties.HOOK_NOTIFICATION_TARGET_ARN)
-  private String initializingHookNotificationTargetArn;
+  private String launchingHookNotificationTargetArn;
 
   @Parameter(
-      names = "--initializing-lifecycle-hook-role-arn",
+      names = "--launching-lifecycle-hook-role-arn",
       description = AwsCommandProperties.HOOK_ROLE_ARN_DESCRIPTION)
-  private String initializingHookRoleArn;
+  private String launchingHookRoleArn;
 
   @Parameter(
       names = "--terminating-lifecycle-hook-default-result",
@@ -95,7 +95,7 @@ public class AwsAddAccountCommand extends AbstractAddAccountCommand {
   @Parameter(
       names = "--terminating-lifecycle-hook-heartbeat-timeout-seconds",
       description = AwsCommandProperties.HOOK_HEARTBEAT_TIMEOUT_DESCRIPTION)
-  private Integer terminatingHookHeartbeatTimeoutSeconds = 3200;
+  private Integer terminatingHookHeartbeatTimeoutSeconds = 3600;
 
   @Parameter(
       names = "--terminating-lifecycle-hook-notification-target-arn",
@@ -128,11 +128,11 @@ public class AwsAddAccountCommand extends AbstractAddAccountCommand {
   private List<AwsLifecycleHook> getLifecycleHooks() {
     Optional<AwsLifecycleHook> initHook =
         getLifecycleHook(
-            "autoscaling:EC2_INSTANCE_INITIALIZING",
-            initializingHookDefaultResult,
-            initializingHookNotificationTargetArn,
-            initializingHookRoleArn,
-            initializingHookHeartbeatTimeoutSeconds);
+            "autoscaling:EC2_INSTANCE_LAUNCHING",
+            launchingHookDefaultResult,
+            launchingHookNotificationTargetArn,
+            launchingHookRoleArn,
+            launchingHookHeartbeatTimeoutSeconds);
 
     Optional<AwsLifecycleHook> terminatingHook =
         getLifecycleHook(
